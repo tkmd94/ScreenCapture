@@ -91,7 +91,7 @@ namespace VMS.TPS
             }
 
             prefixText = plan.Course.Patient.Id + "_" + plan.Course.Id + "_" + plan.Id;
-            // TODO : Add here the code that is called when the script is launched from Eclipse.
+           
             Thread trd = new Thread(new ThreadStart(this.ThreadTask));
             trd.IsBackground = true;
             trd.Start();
@@ -113,8 +113,7 @@ namespace VMS.TPS
         extern static IntPtr GetForegroundWindow();
         private void ThreadTask()
         {
-
-            // TODO : Add here the code that is called when the script is launched from Eclipse.
+            
             Rectangle rect = new Rectangle();
             Thread.Sleep(500);
             if (fullScreenFlag == true)
@@ -129,7 +128,6 @@ namespace VMS.TPS
                 rect = new Rectangle(r.left, r.top, r.right - r.left, r.bottom - r.top);
             }
 
-
             Bitmap bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             using (Graphics g = Graphics.FromImage(bmp))
             {
@@ -140,8 +138,6 @@ namespace VMS.TPS
 
             bmp.Save(filePath, ImageFormat.Jpeg);
             System.Windows.MessageBox.Show("Save as " + filePath);
-
-
         }
     }
 }
