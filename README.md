@@ -31,7 +31,8 @@ VARIAN社製治療計画装置Eclipse上でスクリーンキャプチャを行�
  - ファイル名は「ユーザー名」+「_ScreeCapturePreference.txt」
  -「保存場所」と「キャプチャ領域」をカンマ区切りで指定します。
   - 保存場所：絶対パス指定　
-  - キャプチャ領域：「FullScreen」もしくは「ActiveWindow」
+  - キャプチャ領域：「FullScreen」もしくは「ActiveWindow」 
+  
  例）「C:\Users\vms\Desktop,ActiveWindow」
 
 ## UI画面
