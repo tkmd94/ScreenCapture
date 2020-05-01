@@ -42,11 +42,32 @@ namespace VMS.TPS
         public void Execute(ScriptContext context /*, System.Windows.Window window, ScriptEnvironment environment*/)
         {
             var plan = context.PlanSetup;
-            if (plan == null)
+            var planSum = context.PlanSumsInScope.FirstOrDefault();
+            var patient = context.Patient;
+            var course = context.Course;
+
+            if (patient == null)
             {
-                System.Windows.MessageBox.Show("No plan is loaded.");
+                System.Windows.MessageBox.Show("No patient is loaded!");
                 return;
             }
+
+            var selectedPlanningItem = plan != null ? (PlanningItem)plan : (PlanningItem)planSum;
+
+            var courseId = "NA";
+            if (course !=null)
+            {
+                courseId = course.Id;
+            }
+            var planId = "NA";
+            if(selectedPlanningItem!=null)
+            {
+                planId= selectedPlanningItem.Id;
+            }
+
+
+
+            prefixText = patient.Id + "_" + courseId + "_" + planId;
 
             defaultPath = @"\\172.16.10.181\va_transfer\MLC\--- ESAPI ---\ScreeCapturePreference\";
             preferenceFilePath = defaultPath + context.CurrentUser.Name + "_ScreeCapturePreference.txt";
@@ -88,10 +109,8 @@ namespace VMS.TPS
                     sr.WriteLine(exportFilePath + "," + captureWindowType);
                     sr.Flush();
                 }
-            }
-
-            prefixText = plan.Course.Patient.Id + "_" + plan.Course.Id + "_" + plan.Id;
-           
+            }            
+          
             Thread trd = new Thread(new ThreadStart(this.ThreadTask));
             trd.IsBackground = true;
             trd.Start();
@@ -113,7 +132,7 @@ namespace VMS.TPS
         extern static IntPtr GetForegroundWindow();
         private void ThreadTask()
         {
-            
+
             Rectangle rect = new Rectangle();
             Thread.Sleep(500);
             if (fullScreenFlag == true)
