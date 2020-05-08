@@ -2,6 +2,8 @@
 
 VARIAN社製治療計画装置Eclipse上でスクリーンキャプチャを行うスクリプトです。  
 
+[![LicenseBadges](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)  
+
 ## 導入方法
 
 本スクリプトはbinary-plugin型となるため、事前にビルドして実行ファイルを生成する必要があります。  
