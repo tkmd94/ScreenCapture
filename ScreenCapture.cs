@@ -69,8 +69,8 @@ namespace VMS.TPS
 
             prefixText = patient.Id + "_" + courseId + "_" + planId;
 
-            defaultPath = @"\\172.16.10.181\va_transfer\MLC\--- ESAPI ---\ScreeCapturePreference\";
-            preferenceFilePath = defaultPath + context.CurrentUser.Name + "_ScreeCapturePreference.txt";
+            defaultPath = @"\\172.16.10.181\va_transfer\MLC\--- ESAPI ---\ScreenCapturePreference\";
+            preferenceFilePath = defaultPath + context.CurrentUser.Name + "_ScreenCapturePreference.txt";
             exportFilePath = @"C:\Users\vms\Desktop";
             fullScreenFlag = false;
             if (File.Exists(preferenceFilePath))
